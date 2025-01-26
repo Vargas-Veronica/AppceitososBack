@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'corsheaders',
+    'knox',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -56,12 +58,24 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+
 
 ]
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost',
     ]
+
+
+CORS_ALLOW_METHODS = [
+    "GET",
+    "POST",
+    "PUT",
+    "PATCH",
+    "DELETE",
+    "OPTIONS",
+]
 
 ROOT_URLCONF = 'ecommerce.urls'
 
@@ -91,7 +105,7 @@ DATABASES = {
 
 'default': {
 'ENGINE': 'django.db.backends.mysql',
-'NAME': 'aceitososDB',
+'NAME': 'aceitososdb',
 'USER': 'root',
 'PASSWORD': '',
 'HOST': 'localhost',
@@ -144,3 +158,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
+    ]
+}
