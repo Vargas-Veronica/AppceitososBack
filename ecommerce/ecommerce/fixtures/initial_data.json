@@ -1,0 +1,104 @@
+[
+    {
+        "model": "api.category",
+        "pk": 1,
+        "fields": {
+            "name": "Alimentos",
+            "description": "Productos de consumo alimenticio",
+            "created_at": "2025-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 2,
+        "fields": {
+            "name": "Bebidas",
+            "description": "Bebidas de todo tipo",
+            "created_at": "2025-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "api.category",
+        "pk": 3,
+        "fields": {
+            "name": "Higiene",
+            "description": "Productos para la higiene personal",
+            "created_at": "2025-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "api.product",
+        "pk": 1,
+        "fields": {
+            "name": "Mañanita 1kg",
+            "description": "Yerba mate de calidad",
+            "price": "3000.00",
+            "stock": 50,
+            "category": 1,
+            "image": "",
+            "is_active": true,
+            "created_at": "2025-01-01T00:00:00Z",
+            "updated_at": "2025-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "api.product",
+        "pk": 2,
+        "fields": {
+            "name": "Aceite Cañuelas 1.5L",
+            "description": "Aceite vegetal de girasol",
+            "price": "2800.00",
+            "stock": 30,
+            "category": 1,
+            "image": "",
+            "is_active": true,
+            "created_at": "2025-01-01T00:00:00Z",
+            "updated_at": "2025-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "api.product",
+        "pk": 3,
+        "fields": {
+            "name": "Puré de Tomate Molto",
+            "description": "Puré de tomate natural",
+            "price": "650.00",
+            "stock": 100,
+            "category": 1,
+            "image": "",
+            "is_active": true,
+            "created_at": "2025-01-01T00:00:00Z",
+            "updated_at": "2025-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "api.product",
+        "pk": 4,
+        "fields": {
+            "name": "Durazno Molto",
+            "description": "Duraznos en almíbar",
+            "price": "1400.00",
+            "stock": 40,
+            "category": 1,
+            "image": "",
+            "is_active": true,
+            "created_at": "2025-01-01T00:00:00Z",
+            "updated_at": "2025-01-01T00:00:00Z"
+        }
+    },
+    {
+        "model": "api.product",
+        "pk": 5,
+        "fields": {
+            "name": "Arroz Molto 1kg",
+            "description": "Arroz de grano largo fino",
+            "price": "1300.00",
+            "stock": 70,
+            "category": 1,
+            "image": "",
+            "is_active": true,
+            "created_at": "2025-01-01T00:00:00Z",
+            "updated_at": "2025-01-01T00:00:00Z"
+        }
+    }
+]
