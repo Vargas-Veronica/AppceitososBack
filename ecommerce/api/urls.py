@@ -1,14 +1,14 @@
 from django.urls import path, include
 from rest_framework import routers
-from api.views import ProductViewSet, CategoryViewSet
+from api.views import ProductViewSet, CategoryViewSet, UserViewSet
 from knox import views as knox_views
 from api.views import LoginAPI
 from api.views import RegisterAPI
 
 router = routers.DefaultRouter()
 router.register(r'products', ProductViewSet)
-
 router.register(r'categories', CategoryViewSet)
+router.register(r'users', UserViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),  

@@ -28,7 +28,13 @@ SECRET_KEY = 'django-insecure-ikt^a-onq^k^h)6-74yj(6iccq4%v@xy4kbsjl)r0@6pvow2na
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']  # Lista de hosts permitidos
+CORS_ORIGIN_WHITELIST = ['http://localhost:4200']
+
+
+CORS_ALLOWED_ORIGINS = ['http://localhost:4200',]
+
+CORS_ALLOW_CREDENTIALS = True
 
 
 # Application definition
@@ -58,6 +64,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    
 
 
 ]
@@ -161,7 +168,22 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.authentication.SessionAuthentication',// La autenticación se maneja con knox sino hay error de csrf porq django tiene por defecto
         'knox.auth.TokenAuthentication',
-    ]
+        ],
+    
+    'DEFAULT_PERMISSION_CLASSES': [
+        #'rest_framework.permissions.IsAuthenticated', 
+        'rest_framework.permissions.AllowAny' 
+    ],
+    
 }
+#CSRF_TRUSTED_ORIGINS = [
+ #   "http://127.0.0.1:8000",
+  #  "http://localhost:8000",
+   # "http://192.168.0.145:8000"
+#]
+
+#CSRF_COOKIE_SECURE = False
+#SESSION_COOKIE_SECURE = False
+APPEND_SLASH = False

@@ -5,6 +5,5 @@ class EcommerceConfig(AppConfig):
     name = 'ecommerce'
 
     def ready(self):
-        # Registrar los signals al cargar la app
         print("Registrando signals para la app 'ecommerce'...")
         import ecommerce.signals
