@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-ikt^a-onq^k^h)6-74yj(6iccq4%v@xy4kbsjl)r0@6pvow2na
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']  # Lista de hosts permitidos
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', "10.0.2.2"]  # Lista de hosts permitidos
 CORS_ORIGIN_WHITELIST = ['http://localhost:4200']
 
 
@@ -173,7 +173,7 @@ REST_FRAMEWORK = {
         ],
     
     'DEFAULT_PERMISSION_CLASSES': [
-        #'rest_framework.permissions.IsAuthenticated', 
+        'rest_framework.permissions.IsAuthenticated', 
         'rest_framework.permissions.AllowAny' 
     ],
     
