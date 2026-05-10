@@ -4,6 +4,12 @@ from api.views import ProductViewSet, CategoryViewSet, UserViewSet
 from knox import views as knox_views
 from api.views import LoginAPI
 from api.views import RegisterAPI
+from django.conf import settings
+from django.conf.urls.static import static
+from django.views.static import serve
+from django.urls import re_path
+
+
 
 router = routers.DefaultRouter()
 router.register(r'products', ProductViewSet)
@@ -18,3 +24,10 @@ urlpatterns = [
     path('logoutall', knox_views.LogoutAllView.as_view(), name='logoutall'),    
 
  ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+#urlpatterns += [
+   # re_path(r"^\api\media\products", serve, {"document_root": settings.MEDIA_ROOT}),
+#]

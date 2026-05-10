@@ -6,7 +6,18 @@ from django.contrib.auth.models import User
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
+        imagen_url = serializers.SerializerMethodField()
         fields = '__all__'
+
+    def get_imagen_url(self, obj):
+        request = self.context.get('request')
+        if obj.image:
+            return request.build_absolute_uri(obj.image.url )  # Devuelve URL completa
+        return None
+
+
+
+      
         
         
 class CategorySerializer(serializers.ModelSerializer):

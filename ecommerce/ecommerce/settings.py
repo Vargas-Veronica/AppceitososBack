@@ -28,13 +28,17 @@ SECRET_KEY = 'django-insecure-ikt^a-onq^k^h)6-74yj(6iccq4%v@xy4kbsjl)r0@6pvow2na
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', "10.0.2.2"]  # Lista de hosts permitidos
-CORS_ORIGIN_WHITELIST = ['http://localhost:4200']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', "10.0.2.2","8cfd-2800-2144-c200-2010-cc08-e78c-756f-594b.ngrok-free.app","2f03-2800-2144-c200-2010-cc08-e78c-756f-594b.ngrok-free.app","oriented-seemingly-drake.ngrok-free.app", "*"]  # Lista de hosts permitidos
+CORS_ORIGIN_WHITELIST = ['http://localhost:4200', "https://2f03-2800-2144-c200-2010-cc08-e78c-756f-594b.ngrok-free.app","https://oriented-seemingly-drake.ngrok-free.app"]
 
 
-CORS_ALLOWED_ORIGINS = ['http://localhost:4200',]
+CORS_ALLOWED_ORIGINS = ['http://localhost:4200',"https://2f03-2800-2144-c200-2010-cc08-e78c-756f-594b.ngrok-free.app","https://oriented-seemingly-drake.ngrok-free.app"]
 
 CORS_ALLOW_CREDENTIALS = True
+# settings.py
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+
 
 
 # Application definition
@@ -56,6 +60,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -70,7 +75,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost',
+    'http://localhost',"https://2f03-2800-2144-c200-2010-cc08-e78c-756f-594b.ngrok-free.app", "https://oriented-seemingly-drake.ngrok-free.app"
     ]
 
 
@@ -160,6 +165,18 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
+
+MEDIA_URL ="/media/"
+#MEDIA_ROOT = r'C:\Users\varga\OneDrive\Escritorio\aceitososWeb\back\ecommerce\api\media\products'  
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+if 'ngrok' in ALLOWED_HOSTS:
+    from django.middleware.security import SecurityMiddleware
+    MIDDLEWARE.insert(1, 'django.middleware.security.SecurityMiddleware')
+
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -178,6 +195,9 @@ REST_FRAMEWORK = {
     ],
     
 }
+
+CSRF_TRUSTED_ORIGINS = ["https://*.ngrok-free.app", "https://oriented-seemingly-drake.ngrok-free.app"]
+
 #CSRF_TRUSTED_ORIGINS = [
  #   "http://127.0.0.1:8000",
   #  "http://localhost:8000",
@@ -186,4 +206,4 @@ REST_FRAMEWORK = {
 
 #CSRF_COOKIE_SECURE = False
 #SESSION_COOKIE_SECURE = False
-APPEND_SLASH = False
+APPEND_SLASH = True
